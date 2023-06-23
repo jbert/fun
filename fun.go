@@ -25,6 +25,18 @@ func Map[A any, B any](f func(A) B, as []A) []B {
 	return bs
 }
 
+func ErrMap[A any, B any](f func(A) (B, error), as []A) ([]B, error) {
+	var err error
+	bs := make([]B, len(as))
+	for i := range as {
+		bs[i], err = f(as[i])
+		if err != nil {
+			return nil, err
+		}
+	}
+	return bs, nil
+}
+
 func Filter[A any](pred func(A) bool, as []A) []A {
 	fs := make([]A, 0)
 	for _, a := range as {
