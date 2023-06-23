@@ -25,6 +25,18 @@ func Map[A any, B any](f func(A) B, as []A) []B {
 	return bs
 }
 
+func IntErrMap[A any, B any](f func(A) (B, error), as []A) ([]B, Pair[int, error]) {
+	var err error
+	bs := make([]B, len(as))
+	for i := range as {
+		bs[i], err = f(as[i])
+		if err != nil {
+			return nil, Pair[int, error]{i, err}
+		}
+	}
+	return bs, nil
+}
+
 func ErrMap[A any, B any](f func(A) (B, error), as []A) ([]B, error) {
 	var err error
 	bs := make([]B, len(as))
