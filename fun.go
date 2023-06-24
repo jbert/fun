@@ -17,6 +17,12 @@ func Reverse[T any](l []T) []T {
 	return rev
 }
 
+func For[A any](f func(A), as []A) {
+	for i := range as {
+		f(as[i])
+	}
+}
+
 func Map[A any, B any](f func(A) B, as []A) []B {
 	bs := make([]B, len(as))
 	for i := range as {
