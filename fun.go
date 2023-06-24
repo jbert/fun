@@ -34,7 +34,7 @@ func IntErrMap[A any, B any](f func(A) (B, error), as []A) ([]B, Pair[int, error
 			return nil, Pair[int, error]{i, err}
 		}
 	}
-	return bs, nil
+	return bs, Pair[int, error]{0, nil}
 }
 
 func ErrMap[A any, B any](f func(A) (B, error), as []A) ([]B, error) {
