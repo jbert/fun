@@ -99,21 +99,13 @@ func AnyBool(bs []bool) bool {
 
 func Min[A Number](as []A) A {
 	return Foldl(func(a, m A) A {
-		if a < m {
-			return a
-		} else {
-			return m
-		}
+		return min(a, m)
 	}, as[0], as)
 }
 
 func Max[A Number](as []A) A {
 	return Foldl(func(a, m A) A {
-		if a > m {
-			return a
-		} else {
-			return m
-		}
+		return max(a, m)
 	}, as[0], as)
 }
 
