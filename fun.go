@@ -69,7 +69,7 @@ type Number interface {
 	constraints.Integer | constraints.Float
 }
 
-func Iota[A Number](start A, count int) []A {
+func Iota[A Number](start A, count A) []A {
 	l := make([]A, count)
 	current := start
 	for i := range l {
